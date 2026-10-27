@@ -1,0 +1,32 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cs336-tokenization-study"
+version = "0.1.0"
+description = "带中文讲解的 CS336 byte-level BPE 学习实现"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["regex>=2024.11.6"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8", "ruff>=0.9"]
+official = ["pytest>=8", "tiktoken>=0.12", "psutil>=7"]
+
+[project.scripts]
+bpe-study = "cs336_basics.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
